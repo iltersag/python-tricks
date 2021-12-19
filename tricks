@@ -1,0 +1,12 @@
+conn = pyodbc.connect( connectionString )
+cursor = conn.cursor()
+cursorQuery = "SELECT * FROM .."
+cursor.execute( cursorQuery )
+records = cursor.fetchall()
+insertObject = []
+columnNames = [column[0] for column in cursor.description]
+
+for record in records:
+    insertObject.append( dict( zip( columnNames , record ) ) )
+    
+source => https://www.codegrepper.com/code-examples/python/python+cursor+fetchall+to+dictionary
